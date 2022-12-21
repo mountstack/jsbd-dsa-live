@@ -16,6 +16,7 @@ class LinkedList {
 
     append(value) { 
         let node = new Node(value); 
+        node.visited = true; 
         this.tail.next = node; 
         this.tail = node; 
         this.length++; 
@@ -30,6 +31,7 @@ class LinkedList {
     print() { 
         let data = this.head; 
         while(data) {
+            data.visited = true; 
             console.log(data.value);
             data = data.next; 
         }
@@ -63,24 +65,58 @@ class LinkedList {
 
         return data; 
     }
+
+
+    addSum(head) { 
+        let sum = 0; 
+        let data = head; 
+        while(data) { 
+            sum = sum + data.value; 
+            data = data.next; 
+        } 
+        return sum; 
+    } 
+
+    searchFirstAndLast(head, value) {
+        let index = 0; 
+        let positionIndex = []; // 2 
+        let data = head; 
+
+        while(data) { 
+            if(data.value === value) {
+                if(positionIndex.length == 0) {
+                    positionIndex.push(index); 
+                } 
+                else {
+                    positionIndex[1] = index; 
+                }
+            }
+
+            index++; 
+            data = data.next; 
+        } 
+
+        if(positionIndex.length === 1) {
+            positionIndex[1] = positionIndex[0]; 
+        }
+        return positionIndex; 
+    }
 } 
 
 
-let list = new LinkedList(100); 
+let list = new LinkedList(10); 
+
+list.append(20)
+list.append(30)
+list.append(30)
+list.append(20)
+list.append(20)
+list.append(20)
+list.append(30)
+list.append(5)
 
 
-list.append(500); 
-list.append(600); 
-list.append(700); 
-list.append(800); 
-list.prepend(50); 
-
-list.appendAt(-25, 1); 
-list.appendAt(1000, 8); 
-list.appendAt(80, 3); 
+// console.log(list.searchFirstAndLast(list.head, 20));
 
 list.print(); 
-
-console.log(list);
-
-// console.log(list.head); 
+console.log(list.head);
