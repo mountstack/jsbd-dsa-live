@@ -37,6 +37,13 @@ class LinkedList {
         }
     } 
 
+    printWithRecursion(data) {
+        if(!data) return; 
+
+        console.log(data.value);
+        this.printWithRecursion(data.next); 
+    }
+
     appendAt(value, position) {
         if(position === 1) { // first 
             this.prepend(value); 
@@ -119,4 +126,5 @@ list.append(5)
 // console.log(list.searchFirstAndLast(list.head, 20));
 
 list.print(); 
+list.printWithRecursion(list.head)
 console.log(list.head);
