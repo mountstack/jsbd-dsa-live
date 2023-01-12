@@ -1,6 +1,5 @@
 
-
-let arr = [20, 10, 30, 50, 40]; 
+let arr = [20, 10, 30, 50, 40, 30]; 
 let newArr = []; 
 
 
@@ -21,7 +20,7 @@ function mergeSubArr(arr, l, mid, r) {
     let j = mid+1; 
     let k = i; 
 
-    while(i <= mid || j <= r) {
+    while(i <= mid && j <= r) {
         if(arr[i] <= arr[j]) { 
             newArr[k] = arr[i]; 
             i++; 
@@ -59,6 +58,5 @@ function mergeSubArr(arr, l, mid, r) {
 mergeSort(arr, 0, arr.length-1); 
 
 console.log(arr);
-
 
 
