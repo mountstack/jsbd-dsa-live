@@ -56,7 +56,6 @@ function mergeSubArr(arr, l, mid, r) {
 
 
 mergeSort(arr, 0, arr.length-1); 
-
 console.log(arr);
 
 
