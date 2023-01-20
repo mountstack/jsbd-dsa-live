@@ -7,7 +7,7 @@ class Node {
     }
 }
 
-class BinaryTree {
+class BinarySearchTree {
     constructor(value) {
         this.root = new Node(value)
     } 
@@ -37,15 +37,78 @@ class BinaryTree {
             }
         } 
     } 
+
+    search(value) {
+        let currentNode = this.root; 
+        while(currentNode) {
+            if(currentNode.value === value) {
+                return 'Data found'
+            }
+            else if(currentNode.value > value) {
+                currentNode = currentNode.left; 
+            } 
+            else {
+                currentNode = currentNode.right; 
+            }
+        }
+        return 'Not found'
+    } 
+
+    predecessor() {
+        let currentNode = this.root.left; 
+        while(true) {
+            if(!currentNode.right) {
+                return currentNode.value; 
+            } 
+            currentNode = currentNode.right; 
+        }
+    }
+
+    successor() {
+        let currentNode = this.root.right; 
+        while(true) {
+            if(!currentNode.left) {
+                return currentNode.value; 
+            } 
+            currentNode = currentNode.left; 
+        }
+    } 
+
+    BFS() {
+        let queue = []; 
+        queue.push(this.root) 
+
+        while(queue.length) {
+            let current = queue[0]; 
+            console.log(current.value);
+
+            if(current.left) {
+                queue.push(current.left)
+            }
+            if(current.right) {
+                queue.push(current.right)
+            } 
+
+            queue.shift(); 
+        } 
+    } 
 }
 
 
-let tree = new BinaryTree(10); 
+let bst = new BinarySearchTree(10); 
 
-tree.insert(20)
-tree.insert(8)
-tree.insert(9)
-tree.insert(90)
+bst.insert(20)
+bst.insert(8)
+bst.insert(9)
+bst.insert(90)
+bst.insert(15)
 
-console.log(tree.root);
+console.log(bst.search(900));
+console.log(bst.predecessor());
+console.log(bst.successor());
+
+bst.BFS()
+
+// Binary Search Tree 
+// Balanced BST - Mock test 
 
