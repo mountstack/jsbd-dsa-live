@@ -92,7 +92,45 @@ class BinarySearchTree {
             queue.shift(); 
         } 
     } 
-}
+
+
+    // DFS Chapter - inorder, preorder, postorder traversing 
+    inorder(node) { 
+        if(node.left != null) { 
+            this.inorder(node.left)
+        } 
+
+        console.log(node.value);
+
+        if(node.right) { 
+            this.inorder(node.right)
+        } 
+    } 
+
+    preorder(node) { 
+        console.log(node.value);
+
+        if(node.left) { 
+            this.preorder(node.left)
+        } 
+
+        if(node.right) { 
+            this.preorder(node.right)
+        } 
+    } 
+
+    postorder(node) { 
+        if(node.left) { 
+            this.postorder(node.left)
+        } 
+
+        if(node.right) { 
+            this.postorder(node.right)
+        } 
+
+        console.log(node.value);
+    } 
+} 
 
 
 let bst = new BinarySearchTree(10); 
@@ -103,9 +141,13 @@ bst.insert(9)
 bst.insert(90)
 bst.insert(15)
 
-console.log(bst.search(900));
-console.log(bst.predecessor());
-console.log(bst.successor());
+// console.log(bst.search(900));
+// console.log(bst.predecessor());
+// console.log(bst.successor());
+
+// bst.inorder(bst.root)
+// bst.preorder(bst.root)
+bst.postorder(bst.root)
 
 bst.BFS()
 
