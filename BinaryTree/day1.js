@@ -147,10 +147,12 @@ bst.insert(15)
 
 // bst.inorder(bst.root)
 // bst.preorder(bst.root)
-bst.postorder(bst.root)
+// bst.postorder(bst.root)
 
-bst.BFS()
+// bst.BFS()
 
 // Binary Search Tree 
 // Balanced BST - Mock test 
+
+
 
